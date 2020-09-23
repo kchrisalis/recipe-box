@@ -5,18 +5,43 @@ body {
 }
 
 #title-card {
-    background-image: url("images/background.jpg");
-    background-size: 100%;
-    background-position: no-repeat center fixed;
-    width: 100%;
+    background: url("images/background.jpg") no-repeat center fixed;
+    background-size: cover;
     height: 600px;
-    float: left;
+    padding: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
 
 #content {
-    background-color: whitesmoke;
-    padding-bottom: 800px;
-    width: 100%;
-    float: left;
+    background-color: rgb(235, 235, 235);
+    padding-bottom: 1000px;
 }
+
+#recipeCont {
+    background-color: azure;
+    width: 900px;
+    margin: auto;
+    padding: 20px;
+    display: flex;
+}
+
+#recipeCard {
+    width: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: chocolate;
+    margin: 10px;
+}
+
+#nav-bar {
+    background-color: chartreuse;
+    padding: 1px;
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
