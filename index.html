@@ -2,45 +2,76 @@
 <html>
 
 <head>
-	<title>Recipe Box</title>
-	<link rel="stylesheet" href="style.css">
+  <title>Recipe Box</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-	<div id="nav-bar">
-		<h2>Recipe Box</h2>
+  <div id="nav-bar">
+    <div id='mySidepanel' class='sidepanel'>
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <button class="exploreBtn" id='searchRecipe'>Find a Recipe</button>
+      <button class="dropdownBtn exploreBtn">Categories</button>
 
-		<button>Submit Recipe</button>
-	</div>
-	<div id="title-card">
-		<div id="site-name">
-			<h1>Recipe Box</h1>
+      <div class="category-dropdown">
+        <button class="dropdownBtn exploreBtn">Type of Meal</button>
+        <div class="category-dropdown">
+          <button class="exploreBtn">Breakfast</button>
+          <button class="exploreBtn">Lunch/Brunch</button>
+          <button class="exploreBtn">Dinner</button>
+          <button class="exploreBtn">Desserts
 
-			<p>Keep track of all your recipes here!</p>
-			<p><input id="recipeSearch"></p><button>hi</button>
-		</div>
-	</div>
+          </button>
+        </div>
 
-	<div id='content'>
-		<div id='recipeCont'>
+        <button class="dropdownBtn exploreBtn">Difficulty</button>
+        <div class="category-dropdown">
+          <button class="exploreBtn">Easy</button>
+          <button class="exploreBtn">Intermediate</button>
+          <button class="exploreBtn">Hard</button>
+        </div>
+      </div>
 
-			<div id='recipeCard'>
-				<p>
-					title, difficulty, description, time to prepare, img
-				</p>
-			</div>
-			<div id='recipeCard'>
-				<p>RECIPE</p>
-			</div>
-			<div id='recipeCard'>
-				<p>RECIPE</p>
+      <button class="exploreBtn">Get Lucky</button>
+      <button class="exploreBtn">Favourite Recipes</button>
+      <button class="exploreBtn">About</button>
+    </div>
 
-			</div>
-		</div>
-	</div>
+    <div id='topBar'><button class="openbtn" onclick="openNav()">&#9776; Explore</button></div>
 
-	<!-- Load JavaScript -->
-	<script src="main.js"></script>
+    <h2>Recipe Box</h2>
+
+    <button>Submit Recipe</button>
+  </div>
+  <div id="title-card">
+    <div id="site-name">
+      <h1>Recipe Box</h1>
+
+      <p>Keep track of all your recipes here!</p>
+      <p><input id="recipeSearch"></p><button>hi</button>
+    </div>
+  </div>
+
+  <div id='content'>
+    <div id='recipeCont'>
+
+      <div id='recipeCard'>
+        <p>
+          title, difficulty, description, time to prepare, img
+        </p>
+      </div>
+      <div id='recipeCard'>
+        <p>RECIPE</p>
+      </div>
+      <div id='recipeCard'>
+        <p>RECIPE</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Load JavaScript -->
+  <script src="main.js"></script>
 </body>
 
 </html>
