@@ -36,3 +36,14 @@ document.getElementById("searchRecipe").addEventListener("click", resetPage);
 function resetPage() {
   document.getElementById("recipeCont").innerHTML = "";
 }
+
+
+// Submit Recipe Function 
+
+document.getElementById("submit").addEventListener("click", formSheet);
+
+function formSheet() {
+  document.getElementById("recipeCont").style.display = "none";
+  document.getElementById("title-card").style.display = "none";
+  document.getElementById("form").style.display = "block";
+}

@@ -1,26 +1,57 @@
 /* Style Sheet */
-
 body {
     margin: 0;
+    font-family: 'Open Sans Condensed', 'Oswald', sans-serif;
 }
 
+/* Title Card */
 #title-card {
     background: url("images/background.jpg") no-repeat center fixed;
     background-size: cover;
     height: 600px;
-    padding: 1px;
+    padding: 1px;    
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
+.mainTitle {
+    font-size: 80px;
+    font-family: 'oswald';
+    margin: 0px;
+    color: rgb(158, 192, 185);
+    -webkit-text-stroke-width: 0.01px;
+    -webkit-text-stroke-color: black;   
+}
+
+.tagline {
+    font-size: 25px;
+    margin: 0;
+    font-style: italic;
+    color: rgb(30, 68, 60);
+}
+
+/* Search Bar */
+#recipeSearch {
+    width: 500px;
+    height: 50px;
+    border-radius: 25px;
+    border: 1px solid black;
+    font-family: 'Open Sans Condensed';
+    font-size: large;
+    outline: none;
+    padding-left: 15px;
+}
+
+/* Recipe Display */
 #content {
     background-color: rgb(235, 235, 235);
     padding-bottom: 1000px;
 }
 
 #recipeCont {
-    background-color: azure;
+    background-color: rgb(128, 177, 128);
     width: 900px;
     margin: auto;
     padding: 20px;
@@ -36,6 +67,9 @@ body {
     margin: 10px;
 }
 
+
+
+/* Nav Bar */
 #nav-bar {
     background-color: rgb(178, 206, 200);
     padding: 1px;
@@ -46,24 +80,37 @@ body {
     height: 45px;
 }
 
+.submitForm {
+    background-color: rgba(178, 206, 200, 0.534);
+    color: white;
+    padding: 8px;
+    border: 1px solid black;
+    text-align: left;
+    margin-top: 0;
+    font-size: 20px;
+}
+.header {
+    font-size: 20px;
+    color: white;
+    text-decoration: underline;
+    margin-left: 10px;
+}
+
+/* Nav Bar - Sidepanel Styles */
 .sidepanel {
     height: 100%;
-    /* Specify a height */
     width: 0;
-    /* 0 width - change this with JavaScript */
     position: fixed;
     z-index: 1;
-    /* Stay on top */
     top: 0;
     left: 0;
     background-color:rgb(178, 206, 200);
     padding-top: 50px;
     transition: 0.50s;
-    /* 0.5 second transition effect to slide in the sidepanel */
     overflow: hidden;
 }
 
-/* side panel buttons */
+/* Nav Bar - Side Panel - Buttons */
 .sidepanel .exploreBtn {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -73,7 +120,7 @@ body {
     transition: 0.3s;
 }
 
-/* position/style close button (top right corner 'x') */
+/* Nav Bar - Side Panel - Close Button */
 .sidepanel .closebtn {
     position: absolute;
     top: 0;
@@ -82,7 +129,7 @@ body {
     margin-left: 50px;
 }
 
-/* style button for sidepanel */
+/* Nav Bar - Side Panel - Explore Button*/
 .openbtn {
     font-size: 20px;
     background-color: rgb(178, 206, 200);
@@ -95,7 +142,7 @@ body {
     background-color: rgb(189, 193, 194);
 }
 
-/* style for buttons in sidepanel */
+/* Nav Bar - Side Panel - Buttons in Panel */
 .exploreBtn {
     padding: 8px;
     background-color: rgba(178, 206, 200, 0.534);
@@ -109,18 +156,43 @@ body {
     background:rgb(189, 193, 194);
 }
 
-/* style for close button */
+/* Explore - Close Button */
 .closebtn {
     color: white;
     text-decoration: none;
 }
-
 .closebtn:hover {
     color: rgb(189, 193, 194);
 }
 
+/* Nav Bar - Explore Panel - Categories */
 .category-dropdown {
     display: none;
     background-color: #ffffff;
     padding-left: 8px;
 }
+
+.subCategory {
+    padding: 8px;
+    background-color: rgba(178, 206, 200, 0.534);
+    border: 0px;
+    width: 100%;
+    text-align: left;
+    margin-top: 0;
+    color: white;
+    font-size: 20px;
+}
+
+.subCategory:hover {
+    color: rgb(189, 193, 194);
+}
+
+/* Submit Recipe Div */
+#form {
+    display: none;
+    background-color: azure;
+    width: 900px;
+    margin: auto;
+    padding: 50px;
+}
+
