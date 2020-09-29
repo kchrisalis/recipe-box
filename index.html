@@ -11,41 +11,45 @@
 
 <body>
   <div id="nav-bar">
-    <!-- Explore Button (contents) -->
-    <div id='mySidepanel' class='sidepanel'>
-      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      <button class="exploreBtn" id='searchRecipe'>Find a Recipe</button>
-      <button class="dropdownBtn exploreBtn">Categories</button>
+    <div class="nav-format">
+      <!-- Explore Button (contents) -->
+      <div id='mySidepanel' class='sidepanel'>
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <button class="exploreBtn" id='searchRecipe'>Find a Recipe</button>
+        <button class="dropdownBtn exploreBtn">Categories</button>
 
-      <div class="category-dropdown">
-        <button class="dropdownBtn exploreBtn">Type of Meal</button>
         <div class="category-dropdown">
-          <button class="subCategory">Breakfast</button>
-          <button class="subCategory">Lunch/Brunch</button>
-          <button class="subCategory">Dinner</button>
-          <button class="subCategory">Desserts
+          <button class="dropdownBtn exploreBtn">Type of Meal</button>
+          <div class="category-dropdown">
+            <button class="subCategory">Breakfast</button>
+            <button class="subCategory">Lunch/Brunch</button>
+            <button class="subCategory">Dinner</button>
+            <button class="subCategory">Desserts
 
-          </button>
+            </button>
+          </div>
+
+          <button class="dropdownBtn exploreBtn">Difficulty</button>
+          <div class="category-dropdown">
+            <button class="subCategory">Easy</button>
+            <button class="subCategory">Intermediate</button>
+            <button class="subCategory">Hard</button>
+          </div>
         </div>
 
-        <button class="dropdownBtn exploreBtn">Difficulty</button>
-        <div class="category-dropdown">
-          <button class="subCategory">Easy</button>
-          <button class="subCategory">Intermediate</button>
-          <button class="subCategory">Hard</button>
-        </div>
+        <button class="exploreBtn">Get Lucky</button>
+        <button class="exploreBtn">Favourite Recipes</button>
+        <button class="exploreBtn">About</button>
       </div>
 
-      <button class="exploreBtn">Get Lucky</button>
-      <button class="exploreBtn">Favourite Recipes</button>
-      <button class="exploreBtn">About</button>
-    </div>
 
-    <!-- Nav Bar -->
-    <div id='topBar'><button class="openbtn" onclick="openNav()">&#9776; Explore</button></div>
-    <button class="submitForm" id="submit">Submit Recipe</button>
-    <div class="header">
-      <h2>Recipe Box</h2>
+      <!-- Nav Bar -->
+      <button class="openbtn" onclick="openNav()">&#9776; Explore</button>
+
+      <div class="nav-right">
+        <button class="submitForm" id="submit">Submit Recipe</button>
+        <button class="submitForm" id="submit">Recipe Box</button>
+      </div>
     </div>
   </div>
 

@@ -75,9 +75,15 @@ body {
     padding: 1px;
     position: fixed;
     width: 100%;
+    height: 45px;
+}
+
+.nav-format {
+    width: 99%;
+    margin: right;
     display: flex;
     align-items: center;
-    height: 45px;
+    justify-content: space-between;
 }
 
 .submitForm {
@@ -85,15 +91,15 @@ body {
     color: white;
     padding: 8px;
     border: 1px solid black;
+    border-radius: 3px;
     text-align: left;
     margin-top: 0;
-    font-size: 20px;
+    font-size: 18px;
+    outline: 0;
 }
-.header {
-    font-size: 20px;
-    color: white;
-    text-decoration: underline;
-    margin-left: 10px;
+
+.submitForm:hover {
+    background-color: rgb(189, 193, 194); 
 }
 
 /* Nav Bar - Sidepanel Styles */
@@ -136,6 +142,8 @@ body {
     color: white;
     padding: 10px 15px;
     border: none;
+    height: 45px;
+    outline: 0;
 }
 
 .openbtn:hover {
@@ -150,6 +158,7 @@ body {
     width: 100%;
     text-align: left;
     margin-top: 0;
+    outline: none;
 }
 
 .exploreBtn:hover {
@@ -181,6 +190,7 @@ body {
     margin-top: 0;
     color: white;
     font-size: 20px;
+    outline: none;
 }
 
 .subCategory:hover {

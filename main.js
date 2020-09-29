@@ -39,11 +39,20 @@ function resetPage() {
 
 
 // Submit Recipe Function 
-
 document.getElementById("submit").addEventListener("click", formSheet);
 
 function formSheet() {
   document.getElementById("recipeCont").style.display = "none";
   document.getElementById("title-card").style.display = "none";
   document.getElementById("form").style.display = "block";
+
+}
+
+
+// Find Recipe
+document.getElementById('searchRecipe').addEventListener("click", recipePage);
+
+function recipePage() {
+  document.getElementById("title-card").style.display = "none";
+  document.getElementById("mySidepanel").style.width = "0";
 }
