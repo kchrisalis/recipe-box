@@ -28,7 +28,9 @@ function clickHandler(event) {
 
     } else if (event.target.id == "searchRecipe") {
       document.getElementById("title-card").style.display = "none";
-    }
+
+    } else if (event.target.id == "returnHome")
+      switchPages("title-card");
   }
 }
 
@@ -39,5 +41,12 @@ function element(elementId) {
     document.getElementById(elementId).style.display = "block";
   } else {
     document.getElementById(elementId).style.display = "none";
+  }
+}
+
+// Clear Page
+function clearAll () {
+  for (i = 0; i < document.getElementById("content").childNodes.length; i++) {
+    document.getElementById("content").childNodes[i].style.display = "none";
   }
 }
