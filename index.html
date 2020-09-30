@@ -14,13 +14,13 @@
     <div class="nav-format">
       <!-- Explore Button (contents) -->
       <div id='mySidepanel' class='sidepanel'>
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <button class="exploreBtn" id='searchRecipe'>Find a Recipe</button>
-        <button class="dropdownBtn exploreBtn">Categories</button>
+        <button id="closeBtn">&times;</button>
+        <button class="exploreCategory" id='searchRecipe'>Find a Recipe</button>
+        <button class="dropdownBtn exploreCategory" id='mainCategory'>Categories</button>
 
-        <div class="category-dropdown">
-          <button class="dropdownBtn exploreBtn">Type of Meal</button>
-          <div class="category-dropdown">
+        <div class="category-dropdown" id="category-dropdown">
+          <button class="dropdownBtn exploreCategory" id="meal-category">Type of Meal</button>
+          <div class="category-dropdown" id="meal-dropdown">
             <button class="subCategory">Breakfast</button>
             <button class="subCategory">Lunch/Brunch</button>
             <button class="subCategory">Dinner</button>
@@ -29,26 +29,26 @@
             </button>
           </div>
 
-          <button class="dropdownBtn exploreBtn">Difficulty</button>
-          <div class="category-dropdown">
+          <button class="dropdownBtn exploreCategory" id="difficulty-category">Difficulty</button>
+          <div class="category-dropdown" id="difficulty-dropdown">
             <button class="subCategory">Easy</button>
             <button class="subCategory">Intermediate</button>
             <button class="subCategory">Hard</button>
           </div>
         </div>
 
-        <button class="exploreBtn">Get Lucky</button>
-        <button class="exploreBtn">Favourite Recipes</button>
-        <button class="exploreBtn">About</button>
+        <button class="exploreCategory">Get Lucky</button>
+        <button class="exploreCategory">Favourite Recipes</button>
+        <button class="exploreCategory">About</button>
       </div>
 
 
       <!-- Nav Bar -->
-      <button class="openbtn" onclick="openNav()">&#9776; Explore</button>
+      <button id="exploreBtn">&#9776; Explore</button>
 
       <div class="nav-right">
-        <button class="submitForm" id="submit">Submit Recipe</button>
-        <button class="submitForm" id="submit">Recipe Box</button>
+        <button class="submitForm" id="submitRecipe">Submit Recipe</button>
+        <button class="submitForm">Recipe Box</button>
       </div>
     </div>
   </div>
@@ -61,49 +61,46 @@
   </div>
 
   <!-- Submit Recipe Form -->
-  <div id='content'>
-    <div id='form'>
-      <h1>Recipe Form</h1>
-      <p>Recipe Name: <input></p>
-      <p>Type of Meal: <select>
-          <option>Breakfast</option>
-          <option>Lunch</option>
-          <option>Dinner</option>
-          <option>Dessert</option>
-        </select></p>
-      <p>Difficulty: <select>
-          <option>Simple</option>
-          <option>Intermediate</option>
-          <option>Difficult</option>
-        </select></p>
-      <p>Prep Time: <input></p>
-      <p>Ingredient List: <br>
-        <textarea></textarea></p>
-      <p>Steps: <br>
-        <textarea></textarea></p>
-      <p>Final Comments <br>
-        <textarea></textarea></p>
-      <p><input type="file"></p>
+  <div id='form'>
+    <h1>Recipe Form</h1>
+    <p>Recipe Name: <input></p>
+    <p>Type of Meal: <select>
+        <option>Breakfast</option>
+        <option>Lunch</option>
+        <option>Dinner</option>
+        <option>Dessert</option>
+      </select></p>
+    <p>Difficulty: <select>
+        <option>Simple</option>
+        <option>Intermediate</option>
+        <option>Difficult</option>
+      </select></p>
+    <p>Prep Time: <input></p>
+    <p>Ingredient List: <br>
+      <textarea></textarea></p>
+    <p>Steps: <br>
+      <textarea></textarea></p>
+    <p>Final Comments <br>
+      <textarea></textarea></p>
+    <p><input type="file"></p>
 
-      <button>Submit</button>
-    </div>
-
-    <!-- Recipe Display Page (Default) -->
-    <div id='recipeCont'>
-      <div id='recipeCard'>
-        <p>
-          title, difficulty, description, time to prepare, img
-        </p>
-      </div>
-      <div id='recipeCard'>
-        <p>RECIPE</p>
-      </div>
-      <div id='recipeCard'>
-        <p>RECIPE</p>
-      </div>
-    </div>
+    <button>Submit</button>
   </div>
 
+  <!-- Recipe Display Page (Default) -->
+  <div id='recipeCont'>
+    <div id='recipeCard'>
+      <p>
+        title, difficulty, description, time to prepare, img
+      </p>
+    </div>
+    <div id='recipeCard'>
+      <p>RECIPE</p>
+    </div>
+    <div id='recipeCard'>
+      <p>RECIPE</p>
+    </div>
+  </div>
   <!-- Load JavaScript -->
   <script src="main.js"></script>
 </body>

@@ -1,58 +1,43 @@
-// Recipe Box 
+// // Recipe Box 
 
-// Add Recipe Form
+document.addEventListener("click", clickHandler);
 
-// Search Page
+function clickHandler(event) {
+  if (event.target.nodeName == "BUTTON") {
+    console.log(event.target.id);
 
-/* Set the width of the sidebar to 250px (show it) */
-function openNav() {
-  document.getElementById("mySidepanel").style.width = "250px";
-}
+    // Collapsible Side Bar
+    if (event.target.id == "exploreBtn") {
+      document.getElementById("mySidepanel").style.width = "250px";
+    } else if (event.target.id == "closeBtn") {
+      document.getElementById("mySidepanel").style.width = "0px";
 
-/* Set the width of the sidebar to 0 (hide it) */
-function closeNav() {
-  document.getElementById("mySidepanel").style.width = "0";
-}
+      // Side Bar - Drop Down Categories
+    } else if (event.target.id == "mainCategory") {
+      element('category-dropdown');
+    } else if (event.target.id == "meal-category") {
+      element('meal-dropdown');
+    } else if (event.target.id == "difficulty-category") {
+      element('difficulty-dropdown');
 
-var dropdown = document.getElementsByClassName("dropdownBtn");
-var i;
+      // Submit Recipe Form
+    } else if (event.target.id == "submitRecipe") {
+      document.getElementById("recipeCont").style.display = "none";
+      document.getElementById("title-card").style.display = "none";
+      document.getElementById("form").style.display = "block";
 
-for (let i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function () {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
+    } else if (event.target.id == "searchRecipe") {
+      document.getElementById("title-card").style.display = "none";
     }
-  });
-}
-
-// Search Recipes
-
-document.getElementById("searchRecipe").addEventListener("click", resetPage);
-
-function resetPage() {
-  document.getElementById("recipeCont").innerHTML = "";
+  }
 }
 
 
-// Submit Recipe Function 
-document.getElementById("submit").addEventListener("click", formSheet);
-
-function formSheet() {
-  document.getElementById("recipeCont").style.display = "none";
-  document.getElementById("title-card").style.display = "none";
-  document.getElementById("form").style.display = "block";
-
-}
-
-
-// Find Recipe
-document.getElementById('searchRecipe').addEventListener("click", recipePage);
-
-function recipePage() {
-  document.getElementById("title-card").style.display = "none";
-  document.getElementById("mySidepanel").style.width = "0";
+// Dropdown Category Function
+function element(elementId) {
+  if (document.getElementById(elementId).style.display == "none") {
+    document.getElementById(elementId).style.display = "block";
+  } else {
+    document.getElementById(elementId).style.display = "none";
+  }
 }

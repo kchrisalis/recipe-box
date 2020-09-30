@@ -45,10 +45,10 @@ body {
 }
 
 /* Recipe Display */
-#content {
+/* #content {
     background-color: rgb(235, 235, 235);
     padding-bottom: 1000px;
-}
+} */
 
 #recipeCont {
     background-color: rgb(128, 177, 128);
@@ -117,26 +117,25 @@ body {
 }
 
 /* Nav Bar - Side Panel - Buttons */
-.sidepanel .exploreBtn {
-    padding: 8px 8px 8px 32px;
+.sidepanel .exploreCategory {
+    padding: 6px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: white;
-    display: block;
+    display: flex;
     transition: 0.3s;
 }
 
 /* Nav Bar - Side Panel - Close Button */
-.sidepanel .closebtn {
+.sidepanel #closeBtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
-    margin-left: 50px;
 }
 
 /* Nav Bar - Side Panel - Explore Button*/
-.openbtn {
+#exploreBtn {
     font-size: 20px;
     background-color: rgb(178, 206, 200);
     color: white;
@@ -145,13 +144,12 @@ body {
     height: 45px;
     outline: 0;
 }
-
-.openbtn:hover {
+#exploreBtn:hover {
     background-color: rgb(189, 193, 194);
 }
 
 /* Nav Bar - Side Panel - Buttons in Panel */
-.exploreBtn {
+.exploreCategory {
     padding: 8px;
     background-color: rgba(178, 206, 200, 0.534);
     border: 0px;
@@ -161,16 +159,20 @@ body {
     outline: none;
 }
 
-.exploreBtn:hover {
+.exploreCategory:hover {
     background:rgb(189, 193, 194);
 }
 
 /* Explore - Close Button */
-.closebtn {
+#closeBtn {
     color: white;
+    border: solid black 1px;
+    outline: none;
     text-decoration: none;
+    background-color: rgba(178, 206, 200, 0.534);
+    margin: 1px;
 }
-.closebtn:hover {
+#closeBtn:hover {
     color: rgb(189, 193, 194);
 }
 
