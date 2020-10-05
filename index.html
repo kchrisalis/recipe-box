@@ -53,56 +53,93 @@
     </div>
   </div>
 
-  <!-- Title Card (homepage) -->
-  <div id="title-card">
-    <h1 class='mainTitle'>Recipe Box</h1>
-    <p><input id="recipeSearch" placeholder="Search Recipes">
-      <p class='tagline'>Keep track of all your recipes here!</p>
+  <div id="content">
+    <!-- Title Card (homepage) -->
+    <div id="title-card">
+      <h1 class='mainTitle'>Recipe Box</h1>
+      <p><input id="recipeSearch" placeholder="Search Recipes">
+        <p class='tagline'>Keep track of all your recipes here!</p>
+    </div>
+
+    <!-- Submit Recipe Form -->
+    <div id='form'>
+      <h1>Recipe Form</h1>
+      <p>Recipe Name: <input id='recipeName'></p>
+      <p>Type of Meal: <select id="mealType">
+          <option>Breakfast</option>
+          <option>Lunch</option>
+          <option>Dinner</option>
+          <option>Dessert</option>
+        </select></p>
+      <p>Difficulty: <select id="difficulty">
+          <option>Simple</option>
+          <option>Intermediate</option>
+          <option>Difficult</option>
+        </select></p>
+      <p>Prep Time: <input id='prepTime'></p>
+      <p>Ingredient List: <br>
+        <textarea id='ingredients'></textarea></p>
+      <p>Steps: <br>
+        <textarea id='steps'></textarea></p>
+      <p>Quick Desciption<br>
+        <textarea id='description'></textarea></p>
+      <p><input type="file"></p>
+      <button id='submitBtn'>Submit</button>
+    </div>
+
+    <!-- Recipe Display Page (Default) -->
+    <div id='recipeCont'>
+      <div id='recipeCard'>
+        <a href="#" id="toRecipe"><h1>Recipe Name</h1></a>
+        <p>
+          title, difficulty, description, time to prepare, img
+        </p>
+      </div>
+      <div id='recipeCard'>
+        <p>RECIPE</p>
+      </div>
+      <div id='recipeCard'>
+        <p>RECIPE</p>
+      </div>
+    </div>
+
+    <!-- Main Recipe Display -->
+    <div id="mainRecipe">
+      <h1>Recipe Name</h1>
+      <p>Quick description</p>
+      <div id="subRecipeMenu">
+        <div class="textCont">
+          <h3>Type of Meal:</h3>
+          <p>ahhhh</p>
+        </div>
+        <div class="textCont">
+          <h3>Difficulty</h3>
+          <p> difficulty</p>
+        </div>
+        <div class="textCont">
+          <h3>Prep Time</h3>
+          <p>prep time</p>
+        </div>
+        <div class="textCont">
+          <h3>Yield</h3>
+          <p>yield</p>
+        </div>
+        <button>Favourite This Recipe</button>
+      </div>
+      <h2>Ingredients</h2>
+      <!-- add ingredients list -->
+      <p>ingredients</p>
+      <h2>Instructions</h2>
+      <!-- add intructions list -->
+      <p>instructions </p>
+
+    </div>
+
   </div>
 
-  <!-- Submit Recipe Form -->
-  <div id='form'>
-    <h1>Recipe Form</h1>
-    <p>Recipe Name: <input></p>
-    <p>Type of Meal: <select>
-        <option>Breakfast</option>
-        <option>Lunch</option>
-        <option>Dinner</option>
-        <option>Dessert</option>
-      </select></p>
-    <p>Difficulty: <select>
-        <option>Simple</option>
-        <option>Intermediate</option>
-        <option>Difficult</option>
-      </select></p>
-    <p>Prep Time: <input></p>
-    <p>Ingredient List: <br>
-      <textarea></textarea></p>
-    <p>Steps: <br>
-      <textarea></textarea></p>
-    <p>Final Comments <br>
-      <textarea></textarea></p>
-    <p><input type="file"></p>
-
-    <button>Submit</button>
-  </div>
-
-  <!-- Recipe Display Page (Default) -->
-  <div id='recipeCont'>
-    <div id='recipeCard'>
-      <p>
-        title, difficulty, description, time to prepare, img
-      </p>
-    </div>
-    <div id='recipeCard'>
-      <p>RECIPE</p>
-    </div>
-    <div id='recipeCard'>
-      <p>RECIPE</p>
-    </div>
-  </div>
   <!-- Load JavaScript -->
   <script src="main.js"></script>
+  <script src="helperFunctions.js"></script>
 </body>
 
 </html>

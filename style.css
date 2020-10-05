@@ -9,7 +9,7 @@ body {
     background: url("images/background.jpg") no-repeat center fixed;
     background-size: cover;
     height: 600px;
-    padding: 1px;    
+    padding: 1px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +22,7 @@ body {
     margin: 0px;
     color: rgb(158, 192, 185);
     -webkit-text-stroke-width: 0.01px;
-    -webkit-text-stroke-color: black;   
+    -webkit-text-stroke-color: black;
 }
 
 .tagline {
@@ -101,7 +101,7 @@ body {
 }
 
 .submitForm:hover {
-    background-color: rgb(189, 193, 194); 
+    background-color: rgb(189, 193, 194);
 }
 
 /* Nav Bar - Sidepanel Styles */
@@ -112,7 +112,7 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color:rgb(178, 206, 200);
+    background-color: rgb(178, 206, 200);
     padding-top: 50px;
     transition: 0.50s;
     overflow: hidden;
@@ -146,6 +146,7 @@ body {
     height: 45px;
     outline: 0;
 }
+
 #exploreBtn:hover {
     background-color: rgb(189, 193, 194);
 }
@@ -162,7 +163,7 @@ body {
 }
 
 .exploreCategory:hover {
-    background:rgb(189, 193, 194);
+    background: rgb(189, 193, 194);
 }
 
 /* Explore - Close Button */
@@ -174,6 +175,7 @@ body {
     background-color: rgba(178, 206, 200, 0.534);
     margin: 1px;
 }
+
 #closeBtn:hover {
     color: rgb(189, 193, 194);
 }
@@ -208,5 +210,41 @@ body {
     width: 900px;
     margin: auto;
     padding: 50px;
+    flex-direction: column;
 }
 
+#submitForm {
+    width: 60px;
+}
+
+
+/* Submit Recipe Form */
+textarea {
+    resize: vertical;
+    width: 500px;
+    height: 100px;
+    white-space: pre-wrap;
+}
+
+/* Main Recipe Formatting */
+#mainRecipe {
+    display: flex;
+    flex-direction: column;
+    background: rgb(175, 62, 58);
+    width: 900px;
+    margin: auto;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+#subRecipeMenu {
+    background-color: lightcoral;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.textCont {
+    display: flex;
+    align-items: center;
+}

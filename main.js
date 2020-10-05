@@ -1,5 +1,6 @@
-// // Recipe Box 
+// Recipe Box 
 
+// Main Function (Click Handler for Page)
 document.addEventListener("click", clickHandler);
 
 function clickHandler(event) {
@@ -22,31 +23,46 @@ function clickHandler(event) {
 
       // Submit Recipe Form
     } else if (event.target.id == "submitRecipe") {
-      document.getElementById("recipeCont").style.display = "none";
-      document.getElementById("title-card").style.display = "none";
-      document.getElementById("form").style.display = "block";
+      clearAll();
+      displayPage("form")
 
     } else if (event.target.id == "searchRecipe") {
-      document.getElementById("title-card").style.display = "none";
+      clearAll();
+      displayPage("title-card");
 
-    } else if (event.target.id == "returnHome")
-      switchPages("title-card");
+    } else if (event.target.id == "returnHome") {
+      clearAll();
+      displayPage("title-card");
+      displayPage("recipeCont");
+      
+    } else if (event.target.id == "toRecipe") {
+      clearAll();
+      displayPage("mainRecipe");
+    }
   }
 }
 
+// Recipe Form Function
+document.getElementById("submitBtn").addEventListener("click", submitForm);
 
-// Dropdown Category Function
-function element(elementId) {
-  if (document.getElementById(elementId).style.display == "none") {
-    document.getElementById(elementId).style.display = "block";
-  } else {
-    document.getElementById(elementId).style.display = "none";
-  }
-}
+let recipeInfo = [];
 
-// Clear Page
-function clearAll () {
-  for (i = 0; i < document.getElementById("content").childNodes.length; i++) {
-    document.getElementById("content").childNodes[i].style.display = "none";
-  }
+function submitForm() {
+    splitText();
+    let ing = ingFunc();
+    let step = stepFunc();
+    let descrip = descripFunc();
+
+    recipeInfo.push({
+        recipeName: document.getElementById("recipeName").value,
+        mealType: document.getElementById("mealType").value,
+        difficulty: document.getElementById("difficulty").value,
+        prepTime: document.getElementById("prepTime").value,
+        ingredients: ing,
+        steps: step,
+        description: descrip
+    });
+    console.log(recipeInfo);
+
+    localStorage.setItem("recipes", JSON.stringify(recipeInfo));
 }
