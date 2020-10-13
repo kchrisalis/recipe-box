@@ -66,3 +66,38 @@ function submitForm() {
 
     localStorage.setItem("recipes", JSON.stringify(recipeInfo));
 }
+
+function MainRecipe(array) {
+  let mrDiv = document.createElement('div');
+  let elsR = {
+    div: document.createElement('div'),
+    title: document.createElement('h1'),
+    p: document.createElement('p'),
+    elLi: document.createElement('li')
+    }
+
+  elsR.title.innerHTML = `${array.recipeName}`;
+  mrDiv.append(elsR.p);
+
+  elsR.p.innerHTML = `${array.description}`;
+  mrDiv.append(elsR.p);
+
+  mrDiv.append(elsR.div);
+  elsR.div.append(elsR.p.innerHTML = `Meal Type: ${array.mealType}`);
+  elsR.div.append(elsR.p.innerHTML =  `Difficulty: ${array.difficulty}`)
+  elsR.div.append(elsR.p.innerHTML = `Prep Time: ${array.prepTime}`)
+
+  for (let i = 0; i < array.ingredients.length; i++) {
+    elsR.elLi.appendChild(`${array.ingredients[i]}`);
+  }
+  mrDiv.append(elsR.elLi);
+
+  for (let i = 0; i < array.steps.length; i++) {
+    elsR.stepsLi.appendChild(`${array.ingredients[i]}`);
+  }
+  mrDiv.append(elsR.elLi);
+
+  return mrDiv;
+}
+
+MainRecipe(recipeInfo);
