@@ -227,18 +227,18 @@ textarea {
 }
 
 /* Main Recipe Formatting */
-#mainRecipe {
+.mainRecipe {
     display: flex;
     flex-direction: column;
-    background: rgb(175, 62, 58);
+    background-color: rgb(209, 204, 204);
     width: 900px;
     margin: auto;
     margin-bottom: 20px;
-    padding: 20px;
+    padding: 30px;
 }
 
-#subRecipeMenu {
-    background-color: lightcoral;
+.subRecipeMenu {
+    background-color: rgb(178, 206, 200);
     width: 200px;
     padding: 10px;
     border: 1px solid black;
@@ -246,5 +246,26 @@ textarea {
 
 .textCont {
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    height: 55px;
+}
+
+.faveR {
+    border: solid 1px black;
+    padding: 5px;
+    border-radius: 5px;
+    outline: none;
+}
+
+.faveR:hover {
+    color: rgb(178, 206, 200);
+}
+
+.subH3, .recipeName, .MainRecipeH2 {
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.subP {
+    padding-left: 4px;
 }
