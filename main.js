@@ -1,5 +1,25 @@
 // Recipe Box 
 
+// Recipe Array
+let recipeInfo = recipes();
+
+function recipes() {
+  let storedRecipeStr = localStorage.getItem("recipes");
+  if (storedRecipeStr) {
+    return JSON.parse(storedRecipeStr);
+  } else {
+    return [{
+      recipeName: "recipeName",
+      mealType: "mealType",
+      difficulty: "difficulty",
+      prepTime: "prepTime",
+      ingredients: ["i1", "i2", "i3"],
+      steps: ["s1", "s2", "s3"],
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem "
+    }];
+  }
+}
+
 // Main Function (Click Handler for Page)
 document.addEventListener("click", clickHandler);
 
@@ -10,8 +30,8 @@ function clickHandler(event) {
     // Collapsible Side Bar
     if (event.target.id == "exploreBtn") {
       document.getElementById("mySidepanel").style.width = "250px";
-    } else if (event.target.id == "closeBtn") {
-      document.getElementById("mySidepanel").style.width = "0px";
+
+
 
       // Side Bar - Drop Down Categories
     } else if (event.target.id == "mainCategory") {
@@ -20,7 +40,6 @@ function clickHandler(event) {
       element('meal-dropdown');
     } else if (event.target.id == "difficulty-category") {
       element('difficulty-dropdown');
-
       // Submit Recipe Form
     } else if (event.target.id == "submitRecipe") {
       clearAll();
@@ -51,20 +70,13 @@ function clickHandler(event) {
       document.getElementById("mrDiv").append(MainRecipe(recipeInfo[0]));
     }
   }
+  if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
+    document.getElementById("mySidepanel").style.width = "0px";
+  }
 }
 
 // Recipe Form Function
 document.getElementById("submitBtn").addEventListener("click", submitForm);
-
-let recipeInfo = [{
-  recipeName: "recipeName",
-  mealType: "mealType",
-  difficulty: "difficulty",
-  prepTime: "prepTime",
-  ingredients: ["i1", "i2", "i3"],
-  steps: ["s1", "s2", "s3"],
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem "
-}];
 
 function submitForm() {
   splitText();
