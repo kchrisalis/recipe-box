@@ -7,6 +7,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Oswald:wght@200;300;400&display=swap"
     rel="stylesheet">
+  <link rel="icon" href="images/idiot sandwich.png">
 </head>
 
 <body>
@@ -37,7 +38,7 @@
           </div>
         </div>
 
-        <button class="exploreCategory">Get Lucky</button>
+        <button class="exploreCategory" id="getLucky">Get Lucky</button>
         <button class="exploreCategory">Favourite Recipes</button>
         <button class="exploreCategory" id= "about">About</button>
       </div>
@@ -67,25 +68,25 @@
     <!-- Submit Recipe Form -->
     <div id='form'>
       <h1>Recipe Form</h1>
-      <p>Recipe Name: <input id='recipeName'></p>
-      <p>Type of Meal: <select id="mealType">
+      <p>Recipe Name: <input id='recipeName' class="clear"></p>
+      <p>Type of Meal: <select id="mealType" class="clear">
           <option>Breakfast</option>
           <option>Lunch</option>
           <option>Dinner</option>
           <option>Dessert</option>
         </select></p>
-      <p>Difficulty: <select id="difficulty">
+      <p>Difficulty: <select id="difficulty" class="clear">
           <option>Simple</option>
           <option>Intermediate</option>
           <option>Difficult</option>
         </select></p>
-      <p>Prep Time: <input id='prepTime'></p>
+      <p>Prep Time: <input id='prepTime' class="clear"></p>
       <p>Ingredient List: <br>
-        <textarea id='ingredients'></textarea></p>
+        <textarea id='ingredients' class="clear"></textarea></p>
       <p>Steps: <br>
-        <textarea id='steps'></textarea></p>
+        <textarea id='steps' class="clear"></textarea></p>
       <p>Quick Desciption<br>
-        <textarea id='description'></textarea></p>
+        <textarea id='description' class="clear"></textarea></p>
       <p><input type="file"></p>
       <button id='submitBtn'>Submit</button>
     </div>

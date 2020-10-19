@@ -31,8 +31,6 @@ function clickHandler(event) {
     if (event.target.id == "exploreBtn") {
       document.getElementById("mySidepanel").style.width = "250px";
 
-
-
       // Side Bar - Drop Down Categories
     } else if (event.target.id == "mainCategory") {
       element('category-dropdown');
@@ -40,11 +38,19 @@ function clickHandler(event) {
       element('meal-dropdown');
     } else if (event.target.id == "difficulty-category") {
       element('difficulty-dropdown');
+
       // Submit Recipe Form
     } else if (event.target.id == "submitRecipe") {
       clearAll();
       displayPage("form");
 
+      // Recipe Box Home Button
+    } else if (event.target.id == "returnHome") {
+      clearAll();
+      displayPage("title-card");
+      ("recipeCont");
+
+      // Side Bar (Find Recipe)
     } else if (event.target.id == "searchRecipe") {
       clearAll();
       displayPage("title-card");
@@ -54,25 +60,38 @@ function clickHandler(event) {
         document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
       }
 
-    } else if (event.target.id == "returnHome") {
-      clearAll();
-      displayPage("title-card");
-      ("recipeCont");
+      // Categories
+    // } else if (document.getElementsByTagName("button").value == "breakfast") {
+    //   alert("nerd");
+    //   clearAll();
+    //   displayPage("recipeCont");
+    //   document.getElementById("recipeCont").innerHTML = "";
+    //   for (let i = 0; i < recipeInfo.length; i++) {
+    //     if (recip) {
+    //       document.getElementById("recipeCont").append(recipePrev());
+    //     }
+    //   }
 
-    } else if (event.target.id == "toRecipe") {
+      // Side Bar (Random Recipe)
+    } else if (event.target.id == "getLucky") {
       clearAll();
-      displayPage("mainRecipe");
+      displayPage("mrDiv");
+      document.getElementById("mrDiv").innerHTML = "";
+      document.getElementById("mrDiv").append(MainRecipe(recipeInfo[Math.floor(Math.random() * recipeInfo.length)]));
 
+      // Side Bar (About)
     } else if (event.target.id == "about") {
       clearAll();
       displayPage("mrDiv");
       document.getElementById("mrDiv").innerHTML = "";
       document.getElementById("mrDiv").append(MainRecipe(recipeInfo[0]));
     }
-  }
-  if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
-    document.getElementById("mySidepanel").style.width = "0px";
-  }
+
+    // Making Sidepanel pop back in
+    if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
+      document.getElementById("mySidepanel").style.width = "0px";
+    }
+  } 
 }
 
 // Recipe Form Function
@@ -96,8 +115,15 @@ function submitForm() {
   console.log(recipeInfo);
 
   localStorage.setItem("recipes", JSON.stringify(recipeInfo));
+
+  let inputEls = document.querySelectorAll(".clear");
+
+  for (let i = 0; i < inputEls.length; i++) {
+    inputEls[i].value = "";
+  }
 }
 
+// Main Recipe Create Function 
 function MainRecipe(aRecipe) {
   let mrDiv = document.createElement('div');
 
@@ -146,13 +172,14 @@ function MainRecipe(aRecipe) {
   return mrDiv;
 }
 
+// Recipe Preview Create Function
 function recipePrev(aRecipe) {
   let rcDiv = document.createElement('div');
   rcDiv.classList.add("recipeCard");
-
-  let h2El = document.createElement('h2');
-  h2El.innerHTML = aRecipe.recipeName;
-  rcDiv.append(h2El);
+  
+  let titleDiv = document.createElement('div');
+  titleDiv.innerHTML = `<h2><a onclick="prevDiv()" href='#'>${aRecipe.recipeName}</a></h2>`
+  rcDiv.append(titleDiv);
 
   let infoDiv = document.createElement('div');
   infoDiv.innerHTML = `
@@ -162,4 +189,13 @@ function recipePrev(aRecipe) {
   rcDiv.append(infoDiv);
 
   return rcDiv;
+}
+
+function prevDiv() {
+  alert("loser");
+  // for (let i = 0; i < recipeInfo.length; i++) {
+  //   if (aRecipe.mealType ==) {
+  //     document.getElementById("mrDiv").append(MainRecipe(recipeInfo[i]));
+  //   }
+  // }
 }
