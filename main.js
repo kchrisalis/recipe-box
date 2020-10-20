@@ -61,16 +61,18 @@ function clickHandler(event) {
       }
 
       // Categories
-    // } else if (document.getElementsByTagName("button").value == "breakfast") {
-    //   alert("nerd");
-    //   clearAll();
-    //   displayPage("recipeCont");
-    //   document.getElementById("recipeCont").innerHTML = "";
-    //   for (let i = 0; i < recipeInfo.length; i++) {
-    //     if (recip) {
-    //       document.getElementById("recipeCont").append(recipePrev());
-    //     }
-    //   }
+    } else if (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown") {
+
+      alert("hello");
+      clearAll();
+      displayPage("recipeCont");
+      document.getElementById("recipeCont").innerHTML = "";
+
+      for (let i = 0; i < recipeInfo.length; i++) {
+        if (document.getElementsByTagName("button").value == recipeInfo[i].mealType) {
+          document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+        }
+      }
 
       // Side Bar (Random Recipe)
     } else if (event.target.id == "getLucky") {
@@ -91,7 +93,7 @@ function clickHandler(event) {
     if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
       document.getElementById("mySidepanel").style.width = "0px";
     }
-  } 
+  }
 }
 
 // Recipe Form Function
@@ -110,7 +112,8 @@ function submitForm() {
     prepTime: document.getElementById("prepTime").value,
     ingredients: ing,
     steps: step,
-    description: descrip
+    description: descrip, 
+    fave: false
   });
   console.log(recipeInfo);
 
@@ -140,8 +143,12 @@ function MainRecipe(aRecipe) {
     <div class="textCont">
       <h3 class="subh3">Prep Time:</h3><p class="subP">${aRecipe.prepTime}</p>
     </div>
+    <button id="favourites">Add To Favourites</button>
   </div>
   <h2 class="MainRecipeH2">Ingredients</h2>`
+
+  // Event Listener to Add Favourites Button
+  // document.getElementById("favourites").addEventListener("click", () => aRecipe.fave = !aRecipe.fave);
 
   // Main Recipe Container
   mrDiv.classList.add("mainRecipe");
@@ -176,7 +183,7 @@ function MainRecipe(aRecipe) {
 function recipePrev(aRecipe) {
   let rcDiv = document.createElement('div');
   rcDiv.classList.add("recipeCard");
-  
+
   let titleDiv = document.createElement('div');
   titleDiv.innerHTML = `<h2><a onclick="prevDiv()" href='#'>${aRecipe.recipeName}</a></h2>`
   rcDiv.append(titleDiv);
@@ -191,11 +198,13 @@ function recipePrev(aRecipe) {
   return rcDiv;
 }
 
+// pull up main recipe card that corresponds to the recipe preview card
 function prevDiv() {
-  alert("loser");
-  // for (let i = 0; i < recipeInfo.length; i++) {
-  //   if (aRecipe.mealType ==) {
-  //     document.getElementById("mrDiv").append(MainRecipe(recipeInfo[i]));
-  //   }
-  // }
+  alert("boo");
+  for (let i = 0; i < recipeInfo.length; i++) {
+    if (document.querySelectorAll("h1, .recipeName").value == recipeInfo[i].recipeName) {
+      document.getElementById("mrDiv").append(MainRecipe(recipeInfo[i]));
+    }
+  }
 }
+
