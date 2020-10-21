@@ -276,3 +276,12 @@ textarea {
 .subP {
     padding-left: 4px;
 }
+
+/* Link Styling */
+a {
+    color: rgb(15, 53, 11);
+}
+
+a:hover {
+    color: rgb(175, 181, 192);
+}

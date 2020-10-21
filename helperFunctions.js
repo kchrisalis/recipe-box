@@ -41,3 +41,13 @@ function splitText() {
         return descriptionArray;
     }   
 }
+
+// Preview Recipe -> Main Div
+function prevDiv(rName) {
+    for (let i = 0; i < recipeInfo.length; i++) {
+      if (rName == recipeInfo[i].recipeName) {
+        clearAll();
+        document.getElementById("content").append(MainRecipe(recipeInfo[i]));
+      }
+    }
+  }

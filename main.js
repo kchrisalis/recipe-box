@@ -15,7 +15,8 @@ function recipes() {
       prepTime: "prepTime",
       ingredients: ["i1", "i2", "i3"],
       steps: ["s1", "s2", "s3"],
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem "
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem ",
+      fave: true
     }];
   }
 }
@@ -63,13 +64,14 @@ function clickHandler(event) {
       // Categories
     } else if (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown") {
 
-      alert("hello");
       clearAll();
       displayPage("recipeCont");
       document.getElementById("recipeCont").innerHTML = "";
 
       for (let i = 0; i < recipeInfo.length; i++) {
-        if (document.getElementsByTagName("button").value == recipeInfo[i].mealType) {
+        if (event.target.innerHTML == recipeInfo[i].mealType) {
+          document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+        } else if (event.target.innerHTML == recipeInfo[i].difficulty) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
         }
       }
@@ -87,6 +89,25 @@ function clickHandler(event) {
       displayPage("mrDiv");
       document.getElementById("mrDiv").innerHTML = "";
       document.getElementById("mrDiv").append(MainRecipe(recipeInfo[0]));
+
+    //   // Favourites PLEASE FINISH 
+    // } else if (event.target.id == "favourites") {
+    //   for (let i = 0; i < recipeInfo.length; i++) {
+    //     if (== recipeInfo[i].recipeName) {
+    //       recipeInfo[i].fave = !recipeInfo[i].fave;
+    //     }
+    //   }
+
+    } else if (event.target.id == "favRecipes") {
+      clearAll();
+      displayPage("recipeCont");
+      document.getElementById("recipeCont").innerHTML = "";
+
+      for (let i = 0; i < recipeInfo.length; i++) {
+        if (recipeInfo[i].fave == true) {
+          document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+        }
+      }
     }
 
     // Making Sidepanel pop back in
@@ -112,7 +133,7 @@ function submitForm() {
     prepTime: document.getElementById("prepTime").value,
     ingredients: ing,
     steps: step,
-    description: descrip, 
+    description: descrip,
     fave: false
   });
   console.log(recipeInfo);
@@ -143,12 +164,9 @@ function MainRecipe(aRecipe) {
     <div class="textCont">
       <h3 class="subh3">Prep Time:</h3><p class="subP">${aRecipe.prepTime}</p>
     </div>
-    <button id="favourites">Add To Favourites</button>
+    <button id="favourites" class="faveR">Add To Favourites</button>
   </div>
   <h2 class="MainRecipeH2">Ingredients</h2>`
-
-  // Event Listener to Add Favourites Button
-  // document.getElementById("favourites").addEventListener("click", () => aRecipe.fave = !aRecipe.fave);
 
   // Main Recipe Container
   mrDiv.classList.add("mainRecipe");
@@ -185,7 +203,7 @@ function recipePrev(aRecipe) {
   rcDiv.classList.add("recipeCard");
 
   let titleDiv = document.createElement('div');
-  titleDiv.innerHTML = `<h2><a onclick="prevDiv()" href='#'>${aRecipe.recipeName}</a></h2>`
+  titleDiv.innerHTML = `<h2><a onclick="prevDiv('${aRecipe.recipeName}')" href='#'>${aRecipe.recipeName}</a></h2>`
   rcDiv.append(titleDiv);
 
   let infoDiv = document.createElement('div');
@@ -197,14 +215,3 @@ function recipePrev(aRecipe) {
 
   return rcDiv;
 }
-
-// pull up main recipe card that corresponds to the recipe preview card
-function prevDiv() {
-  alert("boo");
-  for (let i = 0; i < recipeInfo.length; i++) {
-    if (document.querySelectorAll("h1, .recipeName").value == recipeInfo[i].recipeName) {
-      document.getElementById("mrDiv").append(MainRecipe(recipeInfo[i]));
-    }
-  }
-}
-
