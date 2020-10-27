@@ -3,6 +3,7 @@
 // Recipe Array
 let recipeInfo = recipes();
 
+// Loading information into the array 
 function recipes() {
   let storedRecipeStr = localStorage.getItem("recipes");
   if (storedRecipeStr) {
@@ -17,6 +18,26 @@ function recipes() {
       steps: ["s1", "s2", "s3"],
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem ",
       fave: true
+    }, {
+      recipeName: "Banana Bread",
+      mealType: "Dessert",
+      difficulty: "Simple",
+      prepTime: "something",
+      ingredients: ["2 cups all-purpose flour",
+      "1 teaspoon baking soda",
+      "¼ teaspoon salt", "½ cup butter", "¾ cup brown sugar", "2 eggs, beaten", "2 ⅓ cups mashed overripe bananas"],
+      steps: ["Preheat oven to 350 degrees F (175 degrees C). Lightly grease a 9x5 inch loaf pan.", "In a large bowl, combine flour, baking soda and salt. In a separate bowl, cream together butter and brown sugar. Stir in eggs and mashed bananas until well blended. Stir banana mixture into flour mixture; stir just to moisten. Pour batter into prepared loaf pan.", "Bake in preheated oven for 60 to 65 minutes, until a toothpick inserted into center of the loaf comes out clean. Let bread cool in pan for 10 minutes, then turn out onto a wire rack."],
+      description: "This banana bread is moist and delicious with loads of banana flavor! Friends and family love my recipe and say it's by far the best",
+      fave: true
+    }, {
+      recipeName: "Chocolate Chip Cookies",
+      mealType: "Dessert",
+      difficulty: "Simple",
+      prepTime: "1 hour",
+      ingredients: ["1 cup butter, softened", "1 cup white sugar", "1 cup packed brown sugar", "2 eggs", "2 teaspoons vanilla extract", "1 teaspoon baking soda", "2 teaspoons hot water", "½ teaspoon salt", "3 cups all-purpose flour", "2 cups semisweet chocolate chips", "1 cup chopped walnuts"],
+      steps: ["Preheat oven to 350 degrees F (175 degrees C).", "Cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to batter along with salt. Stir in flour, chocolate chips, and nuts. Drop by large spoonfuls onto ungreased pans.", "Bake for about 10 minutes in the preheated oven, or until edges are nicely browned."],
+      description: "Crisp edges, chewy middles.",
+      fave: true
     }];
   }
 }
@@ -25,8 +46,9 @@ function recipes() {
 document.addEventListener("click", clickHandler);
 
 function clickHandler(event) {
+  console.log(event.target.id);
   if (event.target.nodeName == "BUTTON") {
-    console.log(event.target.id);
+
 
     // Collapsible Side Bar
     if (event.target.id == "exploreBtn") {
@@ -90,13 +112,13 @@ function clickHandler(event) {
       document.getElementById("mrDiv").innerHTML = "";
       document.getElementById("mrDiv").append(MainRecipe(recipeInfo[0]));
 
-    //   // Favourites PLEASE FINISH 
-    // } else if (event.target.id == "favourites") {
-    //   for (let i = 0; i < recipeInfo.length; i++) {
-    //     if (== recipeInfo[i].recipeName) {
-    //       recipeInfo[i].fave = !recipeInfo[i].fave;
-    //     }
-    //   }
+      //   // Favourites PLEASE FINISH 
+      // } else if (event.target.id == "favourites") {
+      //   for (let i = 0; i < recipeInfo.length; i++) {
+      //     if (== recipeInfo[i].recipeName) {
+      //       recipeInfo[i].fave = !recipeInfo[i].fave;
+      //     }
+      //   }
 
     } else if (event.target.id == "favRecipes") {
       clearAll();
@@ -114,7 +136,42 @@ function clickHandler(event) {
     if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
       document.getElementById("mySidepanel").style.width = "0px";
     }
+  } else if (event.target.id == "recipeSearch") {
+    document.getElementById('recipeSearch').addEventListener('keyup', searchRecipes);
+
   }
+}
+
+function searchRecipes() {
+  console.log('works');
+  let searchTerm = document.getElementById('recipeSearch').value;
+  searchTerm = searchTerm.toLowerCase();
+
+  document.getElementById('recipeCont').innerHTML = "";
+
+  if (searchTerm == "") {
+    for (let i = 0; i < recipeInfo.length; i++) {
+      document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+    }
+  } else {
+
+    for (let i = 0; i < recipeInfo.length; i++) {
+      if (checkResults(searchTerm, recipeInfo[i])) {
+        document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+      }
+    }
+  }
+}
+
+function checkResults(searchVal, theObject) {
+  let matches = Object.values(theObject);
+  console.log(matches);
+  for (let i = 0; i < matches.length; i++) {
+    if (matches[i].includes(searchVal)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 // Recipe Form Function
@@ -145,73 +202,4 @@ function submitForm() {
   for (let i = 0; i < inputEls.length; i++) {
     inputEls[i].value = "";
   }
-}
-
-// Main Recipe Create Function 
-function MainRecipe(aRecipe) {
-  let mrDiv = document.createElement('div');
-
-  mrDiv.innerHTML = `
-  <h1 class="recipeName">${aRecipe.recipeName}</h1>
-  <p>${aRecipe.description}</p>
-  <div class="subRecipeMenu">
-    <div class="textCont">
-      <h3 class="subh3">Meal Type:</h3><p class="subP">${aRecipe.mealType}</p>
-    </div>
-    <div class="textCont">
-      <h3 class="subh3">Difficulty:</h3><p class="subP">${aRecipe.difficulty}</p>
-    </div>
-    <div class="textCont">
-      <h3 class="subh3">Prep Time:</h3><p class="subP">${aRecipe.prepTime}</p>
-    </div>
-    <button id="favourites" class="faveR">Add To Favourites</button>
-  </div>
-  <h2 class="MainRecipeH2">Ingredients</h2>`
-
-  // Main Recipe Container
-  mrDiv.classList.add("mainRecipe");
-
-  // Ingredients 
-  let ulEl = document.createElement('ul');
-  for (let i = 0; i < aRecipe.ingredients.length; i++) {
-    let liEl = document.createElement('li');
-    liEl.innerHTML = aRecipe.ingredients[i];
-    ulEl.append(liEl);
-  }
-  mrDiv.append(ulEl)
-
-  // Instructions
-  let h2El = document.createElement('h2');
-  h2El.innerHTML = "Instructions";
-  h2El.classList.add("MainRecipeH2");
-  mrDiv.append(h2El);
-
-  let olEl = document.createElement('ol');
-  for (let i = 0; i < aRecipe.steps.length; i++) {
-    let liEl = document.createElement('li');
-    liEl.innerHTML = aRecipe.steps[i];
-    olEl.append(liEl);
-  }
-  mrDiv.append(olEl)
-
-  return mrDiv;
-}
-
-// Recipe Preview Create Function
-function recipePrev(aRecipe) {
-  let rcDiv = document.createElement('div');
-  rcDiv.classList.add("recipeCard");
-
-  let titleDiv = document.createElement('div');
-  titleDiv.innerHTML = `<h2><a onclick="prevDiv('${aRecipe.recipeName}')" href='#'>${aRecipe.recipeName}</a></h2>`
-  rcDiv.append(titleDiv);
-
-  let infoDiv = document.createElement('div');
-  infoDiv.innerHTML = `
-  <p><strong>Meal Type: </strong>${aRecipe.mealType}</p>
-  <p><strong>Difficulty: </strong>${aRecipe.difficulty}</p>
-  <p class="pOverflow"><strong>Description: </strong>${aRecipe.description}</p>`
-  rcDiv.append(infoDiv);
-
-  return rcDiv;
 }
