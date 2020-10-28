@@ -62,11 +62,13 @@ function splitText() {
 // Main Recipe Create Function 
 function MainRecipe(aRecipe) {
   let mrDiv = document.createElement('div');
+  let jrDiv = document.createElement('div');
 
   mrDiv.innerHTML = `
   <h1 class="recipeName">${aRecipe.recipeName}</h1>
-  <p>${aRecipe.description}</p>
-  <div class="subRecipeMenu">
+  <p>${aRecipe.description}</p>`
+
+  jrDiv.innerHTML = `
     <div class="textCont">
       <h3 class="subh3">Meal Type:</h3><p class="subP">${aRecipe.mealType}</p>
     </div>
@@ -75,10 +77,28 @@ function MainRecipe(aRecipe) {
     </div>
     <div class="textCont">
       <h3 class="subh3">Prep Time:</h3><p class="subP">${aRecipe.prepTime}</p>
-    </div>
-    <button id="favourites" class="faveR">Add To Favourites</button>
-  </div>
-  <h2 class="MainRecipeH2">Ingredients</h2>`
+    </div>`
+
+  bEl = document.createElement('button');
+  bEl.classList.add("faveR");
+
+  if (aRecipe.fave == false) {
+    bEl.innerHTML = "Add To Favourites";
+  } else {
+    bEl.innerHTML = "Remove From Favourites";
+  }
+  bEl.addEventListener("click", () => {
+    aRecipe.fave = !aRecipe.fave;
+    if (aRecipe.fave == false) {
+      bEl.innerHTML = "Add To Favourites";
+    } else {
+      bEl.innerHTML = "Remove From Favourites";
+    }
+  });
+
+  jrDiv.classList.add('subRecipeMenu')
+  jrDiv.append(bEl);
+  mrDiv.append(jrDiv);
 
   // Main Recipe Container
   mrDiv.classList.add("mainRecipe");

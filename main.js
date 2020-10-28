@@ -10,25 +10,26 @@ function recipes() {
     return JSON.parse(storedRecipeStr);
   } else {
     return [{
-      recipeName: "recipeName",
-      mealType: "mealType",
-      difficulty: "difficulty",
+      recipeName: "insertName",
+      mealType: "Dinner",
+      difficulty: "Difficult",
       prepTime: "prepTime",
       ingredients: ["i1", "i2", "i3"],
       steps: ["s1", "s2", "s3"],
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam Lorem ",
-      fave: true
+      fave: false
     }, {
       recipeName: "Banana Bread",
-      mealType: "Dessert",
-      difficulty: "Simple",
+      mealType: "Breakfast",
+      difficulty: "Intermediate",
       prepTime: "something",
       ingredients: ["2 cups all-purpose flour",
-      "1 teaspoon baking soda",
-      "¼ teaspoon salt", "½ cup butter", "¾ cup brown sugar", "2 eggs, beaten", "2 ⅓ cups mashed overripe bananas"],
+        "1 teaspoon baking soda",
+        "¼ teaspoon salt", "½ cup butter", "¾ cup brown sugar", "2 eggs, beaten", "2 ⅓ cups mashed overripe bananas"
+      ],
       steps: ["Preheat oven to 350 degrees F (175 degrees C). Lightly grease a 9x5 inch loaf pan.", "In a large bowl, combine flour, baking soda and salt. In a separate bowl, cream together butter and brown sugar. Stir in eggs and mashed bananas until well blended. Stir banana mixture into flour mixture; stir just to moisten. Pour batter into prepared loaf pan.", "Bake in preheated oven for 60 to 65 minutes, until a toothpick inserted into center of the loaf comes out clean. Let bread cool in pan for 10 minutes, then turn out onto a wire rack."],
       description: "This banana bread is moist and delicious with loads of banana flavor! Friends and family love my recipe and say it's by far the best",
-      fave: true
+      fave: false
     }, {
       recipeName: "Chocolate Chip Cookies",
       mealType: "Dessert",
@@ -37,7 +38,7 @@ function recipes() {
       ingredients: ["1 cup butter, softened", "1 cup white sugar", "1 cup packed brown sugar", "2 eggs", "2 teaspoons vanilla extract", "1 teaspoon baking soda", "2 teaspoons hot water", "½ teaspoon salt", "3 cups all-purpose flour", "2 cups semisweet chocolate chips", "1 cup chopped walnuts"],
       steps: ["Preheat oven to 350 degrees F (175 degrees C).", "Cream together the butter, white sugar, and brown sugar until smooth. Beat in the eggs one at a time, then stir in the vanilla. Dissolve baking soda in hot water. Add to batter along with salt. Stir in flour, chocolate chips, and nuts. Drop by large spoonfuls onto ungreased pans.", "Bake for about 10 minutes in the preheated oven, or until edges are nicely browned."],
       description: "Crisp edges, chewy middles.",
-      fave: true
+      fave: false
     }];
   }
 }
@@ -70,14 +71,15 @@ function clickHandler(event) {
       // Recipe Box Home Button
     } else if (event.target.id == "returnHome") {
       clearAll();
-      displayPage("title-card");
-      ("recipeCont");
+      displayPage("homePage")
+      // document.body.background = "title.jpg";
 
       // Side Bar (Find Recipe)
     } else if (event.target.id == "searchRecipe") {
       clearAll();
       displayPage("title-card");
       displayPage("recipeCont");
+      document.getElementById("header").innerHTML = "Search"
       document.getElementById("recipeCont").innerHTML = "";
       for (let i = 0; i < recipeInfo.length; i++) {
         document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
@@ -90,9 +92,15 @@ function clickHandler(event) {
       displayPage("recipeCont");
       document.getElementById("recipeCont").innerHTML = "";
 
+      console.log(event.target.innerHTML);
+
+      displayPage("title-card");
+      document.getElementById('header').innerHTML = event.target.innerHTML;
+
       for (let i = 0; i < recipeInfo.length; i++) {
         if (event.target.innerHTML == recipeInfo[i].mealType) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
+
         } else if (event.target.innerHTML == recipeInfo[i].difficulty) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
         }
@@ -105,21 +113,7 @@ function clickHandler(event) {
       document.getElementById("mrDiv").innerHTML = "";
       document.getElementById("mrDiv").append(MainRecipe(recipeInfo[Math.floor(Math.random() * recipeInfo.length)]));
 
-      // Side Bar (About)
-    } else if (event.target.id == "about") {
-      clearAll();
-      displayPage("mrDiv");
-      document.getElementById("mrDiv").innerHTML = "";
-      document.getElementById("mrDiv").append(MainRecipe(recipeInfo[0]));
-
-      //   // Favourites PLEASE FINISH 
-      // } else if (event.target.id == "favourites") {
-      //   for (let i = 0; i < recipeInfo.length; i++) {
-      //     if (== recipeInfo[i].recipeName) {
-      //       recipeInfo[i].fave = !recipeInfo[i].fave;
-      //     }
-      //   }
-
+      // Favourite Recipes
     } else if (event.target.id == "favRecipes") {
       clearAll();
       displayPage("recipeCont");
@@ -130,7 +124,7 @@ function clickHandler(event) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
         }
       }
-    }
+    } 
 
     // Making Sidepanel pop back in
     if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
@@ -165,14 +159,25 @@ function searchRecipes() {
 
 function checkResults(searchVal, theObject) {
   let matches = Object.values(theObject);
-  console.log(matches);
   for (let i = 0; i < matches.length; i++) {
-    if (matches[i].includes(searchVal)) {
-      return true;
+    if (typeof (matches[i]) == "string") {
+      let value = matches[i].toLowerCase();
+      if (value.includes(searchVal)) {
+        return true;
+      }
+    } else if (typeof (matches[i]) == "object") {
+      for (let m = 0; m < matches[i].length; m++) {
+        let value = matches[i][m].toLowerCase();
+        if (value.includes(searchVal)) {
+          return true;
+        }
+      }
     }
   }
   return false;
 }
+
+
 
 // Recipe Form Function
 document.getElementById("submitBtn").addEventListener("click", submitForm);
@@ -193,7 +198,6 @@ function submitForm() {
     description: descrip,
     fave: false
   });
-  console.log(recipeInfo);
 
   localStorage.setItem("recipes", JSON.stringify(recipeInfo));
 

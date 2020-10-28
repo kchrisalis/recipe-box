@@ -7,16 +7,16 @@ body {
 }
 
 /* Title Card */
-#title-card {
+#title-card  {
     height: 400px;
     padding: 1px;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-.mainTitle {
+.recipeTitle {
     font-size: 80px;
     font-family: 'oswald';
     margin: 0px;
@@ -26,7 +26,7 @@ body {
 }
 
 .tagline {
-    font-size: 25px;
+    font-size: 45px;
     margin: 0;
     font-style: italic;
     color: rgb(30, 68, 60);
@@ -44,10 +44,24 @@ body {
     padding-left: 15px;
 }
 
-/* Recipe Preview Display */
-#content {
-    /* background-color: rgba(8, 87, 87, 0.712); */
-    /* padding-bottom: 1000px; */
+/* Home Page */
+#homePage {
+    width: 600px;
+    height: 400px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: rgb(248, 137, 137);
+}
+
+.title {
+    font-size: 125px;
+    font-family: 'oswald';
+    margin: 0px;
+    color: rgb(255, 255, 255);
+    -webkit-text-stroke-width: 0.01px;
+    -webkit-text-stroke-color: black;
 }
 
 #recipeCont {
@@ -214,7 +228,7 @@ body {
 #form {
     display: none;
     background-color: rgba(211, 223, 220, 0.863);
-    width: 900px;
+    width: 600px;
     margin: auto;
     padding: 50px;
     flex-direction: column;
@@ -224,6 +238,17 @@ body {
     width: 60px;
 }
 
+#submitBtn {
+    border: 1px solid black;
+    border-radius: 2px;
+    padding: 5px;
+    width: 80px;
+    outline: none;
+}
+
+#submitBtn:hover {
+    background: rgb(178, 206, 200)
+}
 
 /* Submit Recipe Form */
 textarea {
@@ -238,7 +263,7 @@ textarea {
     display: flex;
     flex-direction: column;
     background-color: rgb(209, 204, 204);
-    width: 900px;
+    width: 600px;
     margin: auto;
     margin-bottom: 20px;
     padding: 30px;

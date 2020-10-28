@@ -40,7 +40,6 @@
 
         <button class="exploreCategory" id="getLucky">Get Lucky</button>
         <button class="exploreCategory" id="favRecipes">Favourite Recipes</button>
-        <button class="exploreCategory" id= "about">About</button>
       </div>
 
 
@@ -60,14 +59,13 @@
 
     <!-- Title Card (homepage) -->
     <div id="title-card">
-      <h1 class='mainTitle'>Recipe Box</h1>
+      <h1 id="header" class='recipeTitle'>Recipe Box</h1>
       <p><input id="recipeSearch" placeholder="Search Recipes">
-        <p class='tagline'>Keep track of all your recipes here!</p>
     </div>
 
     <!-- Submit Recipe Form -->
     <div id='form'>
-      <h1>Recipe Form</h1>
+      <h1 class="recipeName">Recipe Form</h1>
       <p>Recipe Name: <input id='recipeName' class="clear"></p>
       <p>Type of Meal: <select id="mealType" class="clear">
           <option>Breakfast</option>
@@ -87,13 +85,17 @@
         <textarea id='steps' class="clear"></textarea></p>
       <p>Quick Desciption<br>
         <textarea id='description' class="clear"></textarea></p>
-      <p><input type="file"></p>
       <button id='submitBtn'>Submit</button>
     </div>
 
     <!-- Recipe Display Page (Default) -->
     <div id='recipeCont'></div>
 
+    <!-- Title -->
+    <div id="homePage">
+      <h1 class='title'>Recipe Box</h1>
+      <p class='tagline'>Keep track of all your recipes here!</p>
+    </div>
   </div>
 
   <!-- Load JavaScript -->
