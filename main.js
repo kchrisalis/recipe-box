@@ -47,9 +47,9 @@ function recipes() {
 document.addEventListener("click", clickHandler);
 
 function clickHandler(event) {
+
   console.log(event.target.id);
   if (event.target.nodeName == "BUTTON") {
-
 
     // Collapsible Side Bar
     if (event.target.id == "exploreBtn") {
@@ -68,14 +68,12 @@ function clickHandler(event) {
       clearAll();
       displayPage("form");
 
-      // Recipe Box Home Button
     } else if (event.target.id == "returnHome") {
       clearAll();
-      displayPage("homePage")
-      // document.body.background = "title.jpg";
+      displayPage("homePage");
 
       // Side Bar (Find Recipe)
-    } else if (event.target.id == "searchRecipe") {
+    } else if (event.target.id == "searchRecipe" || event.target.id == "startBtn") {
       clearAll();
       displayPage("title-card");
       displayPage("recipeCont");
@@ -117,6 +115,8 @@ function clickHandler(event) {
     } else if (event.target.id == "favRecipes") {
       clearAll();
       displayPage("recipeCont");
+      displayPage("title-card");
+      document.getElementById('header').innerHTML = event.target.innerHTML;
       document.getElementById("recipeCont").innerHTML = "";
 
       for (let i = 0; i < recipeInfo.length; i++) {
@@ -124,7 +124,7 @@ function clickHandler(event) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
         }
       }
-    } 
+    }
 
     // Making Sidepanel pop back in
     if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
@@ -132,7 +132,6 @@ function clickHandler(event) {
     }
   } else if (event.target.id == "recipeSearch") {
     document.getElementById('recipeSearch').addEventListener('keyup', searchRecipes);
-
   }
 }
 

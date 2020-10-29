@@ -16,30 +16,30 @@
       <!-- Explore Button (contents) -->
       <div id='mySidepanel' class='sidepanel'>
         <button id="closeBtn">&times;</button>
-        <button class="exploreCategory" id='searchRecipe'>Find a Recipe</button>
-        <button class="dropdownBtn exploreCategory" id='mainCategory'>Categories</button>
+        <div class="buttons">
+          <button class="exploreCategory" id='searchRecipe'>Find a Recipe</button>
+          <button class="dropdownBtn exploreCategory" id='mainCategory'>Categories</button>
 
-        <div class="category-dropdown" id="category-dropdown">
-          <button class="dropdownBtn exploreCategory" id="meal-category">Type of Meal</button>
-          <div class="category-dropdown" id="meal-dropdown">
-            <button class="subCategory">Breakfast</button>
-            <button class="subCategory">Lunch</button>
-            <button class="subCategory">Dinner</button>
-            <button class="subCategory">Dessert
+          <div class="category-dropdown" id="category-dropdown">
+            <button class="dropdownBtn exploreCategory" id="meal-category">Type of Meal</button>
+            <div class="category-dropdown" id="meal-dropdown">
+              <button class="subCategory">Breakfast</button>
+              <button class="subCategory">Lunch</button>
+              <button class="subCategory">Dinner</button>
+              <button class="subCategory">Dessert</button>
+            </div>
 
-            </button>
+            <button class="dropdownBtn exploreCategory" id="difficulty-category">Difficulty</button>
+            <div class="category-dropdown" id="difficulty-dropdown">
+              <button class="subCategory">Simple</button>
+              <button class="subCategory">Intermediate</button>
+              <button class="subCategory">Difficult</button>
+            </div>
           </div>
 
-          <button class="dropdownBtn exploreCategory" id="difficulty-category">Difficulty</button>
-          <div class="category-dropdown" id="difficulty-dropdown">
-            <button class="subCategory">Simple</button>
-            <button class="subCategory">Intermediate</button>
-            <button class="subCategory">Difficult</button>
-          </div>
+          <button class="exploreCategory" id="getLucky">Get Lucky</button>
+          <button class="exploreCategory" id="favRecipes">Favourite Recipes</button>
         </div>
-
-        <button class="exploreCategory" id="getLucky">Get Lucky</button>
-        <button class="exploreCategory" id="favRecipes">Favourite Recipes</button>
       </div>
 
 
@@ -93,8 +93,11 @@
 
     <!-- Title -->
     <div id="homePage">
-      <h1 class='title'>Recipe Box</h1>
-      <p class='tagline'>Keep track of all your recipes here!</p>
+      <div id="titleBox">
+        <h1 class='title'>Recipe Box</h1>
+        <p class='tagline'>Keep track of all your recipes!</p>
+        <p><button id="startBtn">Start Here</button></p>
+      </div>
     </div>
   </div>
 
