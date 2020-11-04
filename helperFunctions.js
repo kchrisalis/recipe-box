@@ -126,6 +126,11 @@ function MainRecipe(aRecipe) {
   }
   mrDiv.append(olEl)
 
+  let delEl = document.createElement("p");
+  delEl.innerHTML = `<button class="delete" data-set="${aRecipe.recipeName}">Delete Recipe</button>`
+
+  mrDiv.append(delEl);
+
   return mrDiv;
 }
 
@@ -146,4 +151,17 @@ function recipePrev(aRecipe) {
   rcDiv.append(infoDiv);
 
   return rcDiv;
+}
+
+// Deleting Recipes Function
+function delRecipe() {
+  for (let i = 0; i < recipeInfo.length; i++) {
+    if (recipeInfo[i].recipeName == event.target.dataset.name) {
+      recipeInfo.splice(i,1);
+    }
+  }
+
+  localStorage.setItem("recipes", JSON.stringify(recipeInfo));
+  
+  displayPage("homePage");
 }

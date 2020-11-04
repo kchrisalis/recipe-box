@@ -18,10 +18,10 @@
         <button id="closeBtn">&times;</button>
         <div class="buttons">
           <button class="exploreCategory" id='searchRecipe'>Find a Recipe</button>
-          <button class="dropdownBtn exploreCategory" id='mainCategory'>Categories</button>
+          <button class="dropdownBtn exploreCategory nav" id='mainCategory'>Categories</button>
 
           <div class="category-dropdown" id="category-dropdown">
-            <button class="dropdownBtn exploreCategory" id="meal-category">Type of Meal</button>
+            <button class="dropdownBtn exploreCategory nav" id="meal-category" >Type of Meal</button>
             <div class="category-dropdown" id="meal-dropdown">
               <button class="subCategory">Breakfast</button>
               <button class="subCategory">Lunch</button>
@@ -29,7 +29,7 @@
               <button class="subCategory">Dessert</button>
             </div>
 
-            <button class="dropdownBtn exploreCategory" id="difficulty-category">Difficulty</button>
+            <button class="dropdownBtn exploreCategory nav" id="difficulty-category" >Difficulty</button>
             <div class="category-dropdown" id="difficulty-dropdown">
               <button class="subCategory">Simple</button>
               <button class="subCategory">Intermediate</button>
@@ -44,7 +44,7 @@
 
 
       <!-- Nav Bar -->
-      <button id="exploreBtn">&#9776; Explore</button>
+      <button id="exploreBtn" class ="nav">&#9776; Explore</button>
 
       <div class="nav-right">
         <button class="submitForm" id="submitRecipe">Submit Recipe</button>
@@ -60,32 +60,33 @@
     <!-- Title Card (homepage) -->
     <div id="title-card">
       <h1 id="header" class='recipeTitle'>Recipe Box</h1>
-      <p><input id="recipeSearch" placeholder="Search Recipes">
+      <p><input id="recipeSearch" placeholder="Search Recipes" onkeyup="searchRecipes();">
     </div>
 
     <!-- Submit Recipe Form -->
     <div id='form'>
       <h1 class="recipeName">Recipe Form</h1>
-      <p>Recipe Name: <input id='recipeName' class="clear"></p>
-      <p>Type of Meal: <select id="mealType" class="clear">
+      <p class="formTitles">Recipe Name: <input id='recipeName' class="clear"></p>
+      <p class="formTitles">Type of Meal: <select id="mealType" class="clear">
           <option>Breakfast</option>
           <option>Lunch</option>
           <option>Dinner</option>
           <option>Dessert</option>
         </select></p>
-      <p>Difficulty: <select id="difficulty" class="clear">
+      <p class="formTitles">Difficulty: <select id="difficulty" class="clear">
           <option>Simple</option>
           <option>Intermediate</option>
           <option>Difficult</option>
         </select></p>
-      <p>Prep Time: <input id='prepTime' class="clear"></p>
-      <p>Ingredient List: <br>
+      <p class="formTitles">Prep Time: <input id='prepTime' class="clear"></p>
+      <p class="tip">Don't number ingredients or steps. Each ingredient/steps should be on its own line for proper formatting</p>
+      <p class="formTitles">Ingredient List: <br>
         <textarea id='ingredients' class="clear"></textarea></p>
-      <p>Steps: <br>
+      <p class="formTitles">Steps: <br>
         <textarea id='steps' class="clear"></textarea></p>
-      <p>Quick Desciption<br>
+      <p class="formTitles">Quick Desciption<br>
         <textarea id='description' class="clear"></textarea></p>
-      <button id='submitBtn'>Submit</button>
+      <p><button id='submitBtn'>Submit</button></p>
     </div>
 
     <!-- Recipe Display Page (Default) -->

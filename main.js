@@ -48,15 +48,10 @@ document.addEventListener("click", clickHandler);
 
 function clickHandler(event) {
 
-  console.log(event.target.id);
   if (event.target.nodeName == "BUTTON") {
 
-    // Collapsible Side Bar
-    if (event.target.id == "exploreBtn") {
-      document.getElementById("mySidepanel").style.width = "250px";
-
-      // Side Bar - Drop Down Categories
-    } else if (event.target.id == "mainCategory") {
+    // Side Bar - Drop Down Categories
+    if (event.target.id == "mainCategory") {
       element('category-dropdown');
     } else if (event.target.id == "meal-category") {
       element('meal-dropdown');
@@ -68,6 +63,7 @@ function clickHandler(event) {
       clearAll();
       displayPage("form");
 
+      // Home Page Button
     } else if (event.target.id == "returnHome") {
       clearAll();
       displayPage("homePage");
@@ -77,8 +73,11 @@ function clickHandler(event) {
       clearAll();
       displayPage("title-card");
       displayPage("recipeCont");
+
       document.getElementById("header").innerHTML = "Search"
       document.getElementById("recipeCont").innerHTML = "";
+      document.getElementById("recipeSearch").value = "";
+
       for (let i = 0; i < recipeInfo.length; i++) {
         document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
       }
@@ -90,9 +89,8 @@ function clickHandler(event) {
       displayPage("recipeCont");
       document.getElementById("recipeCont").innerHTML = "";
 
-      console.log(event.target.innerHTML);
-
       displayPage("title-card");
+      document.getElementById('recipeSearch').value = "";
       document.getElementById('header').innerHTML = event.target.innerHTML;
 
       for (let i = 0; i < recipeInfo.length; i++) {
@@ -124,19 +122,23 @@ function clickHandler(event) {
           document.getElementById("recipeCont").append(recipePrev(recipeInfo[i]));
         }
       }
+    } else if (event.target.classList == "delete") {
+      delRecipe();
     }
-
-    // Making Sidepanel pop back in
-    if ((event.target.parentElement.id == "mySidepanel" && event.target.id != "mainCategory") || (event.target.parentElement.id == "meal-dropdown" || event.target.parentElement.id == "difficulty-dropdown")) {
-      document.getElementById("mySidepanel").style.width = "0px";
-    }
-  } else if (event.target.id == "recipeSearch") {
-    document.getElementById('recipeSearch').addEventListener('keyup', searchRecipes);
+  }
+  // Collapsible Side Bar
+  if (event.target.classList.contains("nav")) {
+    document.getElementById("mySidepanel").style.width = "250px";
+  } else {
+    document.getElementById("mySidepanel").style.width = "0px";
+    document.getElementById('meal-dropdown').style.display = "none"
+    document.getElementById('category-dropdown').style.display = "none"
+    document.getElementById('category-dropdown').style.display = "none"
   }
 }
 
+// Making the search bar work
 function searchRecipes() {
-  console.log('works');
   let searchTerm = document.getElementById('recipeSearch').value;
   searchTerm = searchTerm.toLowerCase();
 
@@ -156,6 +158,7 @@ function searchRecipes() {
   }
 }
 
+// Checking if searchVal appears in array
 function checkResults(searchVal, theObject) {
   let matches = Object.values(theObject);
   for (let i = 0; i < matches.length; i++) {
@@ -177,8 +180,7 @@ function checkResults(searchVal, theObject) {
 }
 
 
-
-// Recipe Form Function
+// Saving Recipe Info into Array
 document.getElementById("submitBtn").addEventListener("click", submitForm);
 
 function submitForm() {

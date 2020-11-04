@@ -135,6 +135,7 @@ body {
     justify-content: space-between;
 }
 
+/* Submit */
 .submitForm {
     background-color: rgba(178, 206, 200, 0.534);
     color: white;
@@ -261,8 +262,16 @@ body {
     flex-direction: column;
 }
 
-#submitForm {
-    width: 60px;
+/* p formtting for submit form */
+.tip {
+    font-size: 17px;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.formTitles {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #submitBtn {
@@ -274,7 +283,7 @@ body {
 }
 
 #submitBtn:hover {
-    background: rgb(178, 206, 200)
+    background: rgb(178, 206, 200);
 }
 
 /* Submit Recipe Form */
@@ -309,15 +318,16 @@ textarea {
     height: 55px;
 }
 
-.faveR {
+.faveR, .delete {
     border: solid 1px black;
     padding: 5px;
     border-radius: 5px;
     outline: none;
 }
 
-.faveR:hover {
-    color: rgb(178, 206, 200);
+.faveR:hover, .delete:hover{
+    background: rgb(189, 193, 194);
+    color: white;
 }
 
 .subH3, .recipeName, .MainRecipeH2 {
@@ -337,3 +347,4 @@ a {
 a:hover {
     color: rgb(175, 181, 192);
 }
+
